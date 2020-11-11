@@ -1,30 +1,33 @@
-import logo from "./logo.svg";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Books from "./pages/Books";
-import Detail from "./pages/Detail";
-import NoMatch from "./pages/NoMatch";
-import Nav from "./components/Nav";
+import SearchPage from "./pages/search";
+import SearchIDPage from "./pages/search/:id";
+import SavedPage from "./pages/saved";
+import SavedIDPage from "./pages/saved/:id";
+// import NoMatch from "./pages/NoMatch";
+// import Nav from "./components/Nav";
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <div>
-          <Nav />
-          <Switch>
-            <Route exact path={["/", "/books"]}>
-              <Books />
-            </Route>
-            <Route exact path="/books/:id">
-              <Detail />
-            </Route>
-            <Route>
-              <NoMatch />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
-    </div>
+    <Router>
+      {/* <Nav /> */}
+      <Switch>
+        <Route exact path={["/", "/search"]}>
+          <SearchPage />
+        </Route>
+        <Route exact path="/search/:id">
+          <SearchIDPage />
+        </Route>
+        <Route exact path="/saved">
+          <SavedPage />
+        </Route>
+        <Route exact path="/saved/:id">
+          <SavedIDPage />
+        </Route>
+        {/* <Route>
+          <NoMatch />
+        </Route> */}
+      </Switch>
+    </Router>
   );
 }
 
