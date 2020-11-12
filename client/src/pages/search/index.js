@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import API from "../../utils/API";
 import BookCard from "../../components/BookCard";
+import "../style.css";
+
 function SearchPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -8,8 +10,9 @@ function SearchPage() {
     if (!searchTerm) return;
     const handle = setTimeout(async () => {
       const res = await API.searchForBooks(searchTerm);
-
+      console.log(res);
       setSearchResults(
+        // console.log(searchResults(res.data.items)),
         res.data.items.map(
           ({
             id: bookId,
@@ -33,17 +36,18 @@ function SearchPage() {
     }, 500);
     return () => clearTimeout(handle);
   }, [searchTerm]);
-  console.log(searchResults);
   return (
     <>
-      <h1>Search</h1>
-      <input
-        type="text"
-        placeholder="Search for book"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      <p>{searchTerm}</p>
+      <div className="header">
+        <h1>Search</h1>
+        <input
+          type="text"
+          placeholder="Search for book"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <p>{searchTerm}</p>
+      </div>
       {searchResults.map(({ id, bookId, ...rest }) => (
         <BookCard
           {...rest}

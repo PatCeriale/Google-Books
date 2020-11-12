@@ -1,0 +1,33 @@
+.card {
+  margin: 5px;
+}
+
+.bookCardBtn {
+  background-color: white;
+  color: black;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+.banner {
+  text-align: center;
+  margin: 15px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: black;
+}
+.google {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+.blue {
+  color: blue;
+}
+.yellow {
+  color: yellow;
+}
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}

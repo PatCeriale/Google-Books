@@ -22,7 +22,7 @@ export default {
   },
   // Saves a book to the database
   saveBook: function (bookData) {
-    return { id: Math.random() };
-    // axios.post("/api/books", bookData);
+    // return { id: Math.random() };
+    axios.post("/api/books", bookData);
   },
 };

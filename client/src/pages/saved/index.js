@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import API from "../../utils/API";
 import BookCard from "../../components/BookCard";
+import "../style.css";
+
 function SavedPage() {
   const [savedBooks, setSearchResults] = useState([]);
   useEffect(() => {
@@ -8,8 +10,9 @@ function SavedPage() {
   }, []);
   return (
     <>
-      <h1>Saved</h1>
-
+      <div className="header">
+        <h1>Saved</h1>
+      </div>
       {savedBooks.map((book) => (
         <BookCard
           {...book}
