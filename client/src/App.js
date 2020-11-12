@@ -4,12 +4,12 @@ import SearchIDPage from "./pages/search/:id";
 import SavedPage from "./pages/saved";
 import SavedIDPage from "./pages/saved/:id";
 // import NoMatch from "./pages/NoMatch";
-// import Nav from "./components/Nav";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <Router>
-      {/* <Nav /> */}
+      <Navbar />
       <Switch>
         <Route exact path={["/", "/search"]}>
           <SearchPage />

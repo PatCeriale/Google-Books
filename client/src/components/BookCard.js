@@ -31,7 +31,16 @@ function BookCard({
   return (
     <div className="card" {...rest}>
       <h1>{title}</h1>
-      <p>{authors}</p>
+      <p>
+        {" "}
+        {authors}
+        <br />
+        <img src={image} />
+        <br />
+        {description}
+        <br />
+        <a href={link}>{link}</a>
+      </p>
       <button onClick={handleBookSave}>{saved ? "Delete" : "Save"}</button>
     </div>
   );
