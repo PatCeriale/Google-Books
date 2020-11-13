@@ -4,21 +4,24 @@ import BookCard from "../../components/BookCard";
 import "../style.css";
 
 function SavedPage() {
-  const [savedBooks, setSearchResults] = useState([]);
+  const [savedBooks, setSavedBooks] = useState([]);
   useEffect(() => {
-    API.getBooks().then((res) => setSearchResults(res.data));
+    API.getBooks().then((res) =>
+      setSavedBooks(res.data.map(({ _id, ...rest }) => ({ id: _id, ...rest })))
+    );
   }, []);
   return (
     <>
       <div className="header">
         <h1>Saved</h1>
       </div>
-      {savedBooks.map((book) => (
+      {savedBooks.map((book, i) => (
         <BookCard
+          key={i}
           {...book}
           saved
           onDelete={(id) =>
-            setSearchResults(savedBooks.filter((book) => book.id !== id))
+            setSavedBooks(savedBooks.filter((book) => book.id !== id))
           }
         />
       ))}

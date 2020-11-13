@@ -6,8 +6,14 @@ import "../style.css";
 function SearchPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [savedBooks, setSavedBooks] = useState();
   useEffect(() => {
-    if (!searchTerm) return;
+    API.getBooks().then((res) =>
+      setSavedBooks(res.data.map(({ _id, bookId }) => ({ id: _id, bookId })))
+    );
+  }, []);
+  useEffect(() => {
+    if (!searchTerm || !savedBooks) return;
     const handle = setTimeout(async () => {
       const res = await API.searchForBooks(searchTerm);
       console.log(res);
@@ -24,6 +30,9 @@ function SearchPage() {
               infoLink: link,
             },
           }) => ({
+            id: (
+              savedBooks.find((savedBook) => savedBook.bookId === bookId) || {}
+            ).id,
             bookId,
             title,
             authors,
@@ -35,7 +44,7 @@ function SearchPage() {
       );
     }, 500);
     return () => clearTimeout(handle);
-  }, [searchTerm]);
+  }, [searchTerm, savedBooks]);
   return (
     <>
       <div className="header">
@@ -48,8 +57,9 @@ function SearchPage() {
         />
         <p>{searchTerm}</p>
       </div>
-      {searchResults.map(({ id, bookId, ...rest }) => (
+      {searchResults.map(({ id, bookId, ...rest }, i) => (
         <BookCard
+          key={i}
           {...rest}
           id={id || bookId}
           saved={!!id}

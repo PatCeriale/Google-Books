@@ -19,15 +19,15 @@
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
 }
-.blue {
+.google > span:nth-child(3n + 1) {
   color: blue;
 }
-.yellow {
-  color: yellow;
-}
-.red {
+.google > span:nth-child(4n + 2) {
   color: red;
 }
-.green {
+.google > span:nth-child(3) {
+  color: yellow;
+}
+.google > span:nth-child(5) {
   color: green;
 }

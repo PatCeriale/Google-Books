@@ -13,11 +13,13 @@ router
 
 module.exports = router;
 
-<div className="media">
+{
+  /* <div className="media">
   <img
     className="align-self-start mr-3"
     src={image}
     //   picture.large
     alt={title}
   />
-</div>;
+</div>; */
+}

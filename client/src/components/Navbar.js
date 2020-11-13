@@ -17,12 +17,15 @@ function Navbar() {
         <h1>
           <strong>
             <span className="google">
-              <span className="blue">G</span>
-              <span className="red">o</span>
-              <span className="yellow">o</span>
-              <span className="blue">g</span>
-              <span className="green">l</span>
-              <span className="red">e</span>
+              {"Google".split("").map((str) => (
+                <span>{str}</span>
+              ))}
+              {/* <span>G</span>
+              <span>o</span>
+              <span>o</span>
+              <span>g</span>
+              <span>l</span>
+              <span>e</span> */}
             </span>{" "}
             Books Search
           </strong>

@@ -25,8 +25,10 @@ function BookCard({
         description,
         image,
         link,
+        bookId: id,
       });
-      onSave(id, res.id);
+      console.log(res);
+      onSave(id, res.data._id);
     }
   };
   return (
